@@ -20,6 +20,10 @@ class Router
                 $this->routeEach($route);
             }
         }
+
+        // if none of the routes match, throw 404
+        $error = new \Phplover\Libraries\Error;
+        return $error->notFound();
     }
 
     public function routeEach(array $data)
