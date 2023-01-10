@@ -24,7 +24,7 @@ class Cache
     }
 
     // create a cache file
-    public function createCache(string $data, string $file)
+    public function createCache(string $file, $data)
     {
         FileSystem::write(CACHEPATH . $file, $data);
     }
@@ -34,7 +34,8 @@ class Cache
     {
         if (file_exists(CACHEPATH . $file))
         {
-            return FileSystem::read(CACHEPATH . $file);
+            require_once CACHEPATH . $file;
+            exit;
         } else {
             return false;
         }
