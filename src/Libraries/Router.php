@@ -11,8 +11,14 @@ class Router
 
     public function routeAll(array $allRoutes)
     {
+        // get the current url
+        $currentUrl = $_SERVER['REQUEST_URI'];
+
+        // check if the current url matches any of the routes
         foreach ($allRoutes as $route) {
-            $this->routeEach($route);
+            if ($route['url'] === $currentUrl) {
+                $this->routeEach($route);
+            }
         }
     }
 
@@ -32,12 +38,20 @@ class Router
         // if not found, use 'Index' as default
         $method = $data['method'] ?? $default_method;
 
+        // get the namespace value from array passed
+        // if not found, use false as default
+        $controllerNamespace = $data['namespace'] ?? false;
+
         // get the params from array passed
         // if not found, use empty array as default
         $params = $data['params'] ?? [];
 
-        // set the controller name with full namespace
-        $controller = 'Namakr655\\Phplover\\Controllers\\' . $controller;
+        // check if namespace is gicen along with controller name
+        if (strpos($controller, '\\') !== false) {
+            $controller = $controller;
+        } else {
+            $controller = 'Phplover\\Controllers\\' . $controller;
+        }
 
         // check if controller exists
         if (class_exists($controller)) {
