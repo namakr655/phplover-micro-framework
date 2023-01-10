@@ -19,7 +19,41 @@ class Router
 
         // check if the current url matches any of the routes
         foreach ($allRoutes as $route) {
-            if ($route['url'] === $currentUrl) {
+
+            // get the url from the route
+            $url = $route['url'];
+
+            // check if the url has any parameters
+            if (strpos($url, '{') !== false) {
+
+                // get the parameters from the url
+                preg_match_all('/\{([^\}]+)\}/', $url, $matches);
+
+                // get the parameters from the url
+                $params = $matches[1];
+
+                // get the parameters from the url
+                $url = preg_replace('/\{([^\}]+)\}/', '([^/]+)', $url);
+
+                // get the parameters from the url
+                $url = '/^' . str_replace('/', '\/', $url) . '$/';
+
+                // get the parameters from the url
+                if (preg_match($url, $currentUrl, $matches)) {
+
+                    // get the parameters from the url
+                    $found = true;
+
+                    // get the parameters from the url
+                    $params = array_slice($matches, 1);
+
+                    // get the parameters from the url
+                    $route['params'] = $params;
+
+                    // get the parameters from the url
+                    $this->routeEach($route);
+                }
+            } elseif($route['url'] === $currentUrl) {
                 $found = true;
                 $this->routeEach($route);
             }
@@ -77,7 +111,7 @@ class Router
 
                 // callback to the method with parameters passed
                 if (count($params) > 0) {
-                    call_user_func_array([$controller, $method], $params);
+                    $controller->$method($params);
                 } else {
                     $controller->$method();
                 }
