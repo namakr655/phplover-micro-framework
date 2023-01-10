@@ -14,7 +14,8 @@
     },
     "require": {
         "league/plates": "^3.4",
-        "dibi/dibi": "^4.2"
+        "dibi/dibi": "^4.2",
+        "nette/utils": "^3.2"
     },
     "require-dev": {
         "tracy/tracy": "^2.9",
