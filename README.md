@@ -8,4 +8,8 @@ PHPLover is an extremely simple Micro PHP Framework that is built for newbiews t
 
 The full documentation of the framework will be available on the website itself: [phplover.me](https://phplover.me).
 
+## Installation
+
+`composer create-project namakr655/phplover:dev-main`
+
 **(Work in Progress)**
