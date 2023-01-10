@@ -1,5 +1,8 @@
 # .env file is used to store sensitive variables such as passwords
 
+### BASE URL ###
+BASE_URL = ""
+
 ### database config ###
 DB_HOST = ""
 DB_NAME = ""
