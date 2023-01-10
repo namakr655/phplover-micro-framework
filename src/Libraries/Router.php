@@ -14,16 +14,25 @@ class Router
         // get the current url
         $currentUrl = $_SERVER['REQUEST_URI'];
 
+        // route found?
+        $found = false; # for now
+
         // check if the current url matches any of the routes
         foreach ($allRoutes as $route) {
             if ($route['url'] === $currentUrl) {
+                $found = true;
                 $this->routeEach($route);
             }
         }
 
-        // if none of the routes match, throw 404
+        // Error Handler
         $error = new \Phplover\Libraries\Error;
-        return $error->notFound();
+
+        // check if the current url matches any of the urls in $routes
+        // if not, throw 404
+        if ($found === false) {
+            return $error->notFound();
+        }
     }
 
     public function routeEach(array $data)

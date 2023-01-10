@@ -30,11 +30,14 @@ if ($baseConfig->debugging === true) {
 }
 
 // Routing the Requests
-$router = new \Phplover\Libraries\Router();
-$router->routeAll([
+$routes = [
     [
         'url' => '/',
         'controller' => 'Home',
         'method' => 'Index',
     ],
-]);
+];
+
+// Router Library
+$router = new \Phplover\Libraries\Router();
+$router->routeAll($routes);
