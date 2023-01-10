@@ -1,0 +1,23 @@
+{
+    "name": "namakr655/phplover",
+    "description": "A Micro PHP Framework for beginners to learn the fundamentals of how frameworks actually work",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Phplover\\": "src/",
+            "Phplover\\Modules": "modules/"
+        },
+        "files": [
+            "src/Functions.php"
+        ]
+    },
+    "require": {
+        "league/plates": "^3.4",
+        "dibi/dibi": "^4.2"
+    },
+    "require-dev": {
+        "tracy/tracy": "^2.9",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
