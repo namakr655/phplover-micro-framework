@@ -8,10 +8,12 @@
 function base_url(string $path = ''): string
 {
 
-    if ((new \Phplover\Config\Base)->debugging === true && isset($_ENV['BASE_URL'])) {
+    $baseConfig = new \Phplover\Config\Base();
+
+    if ($baseConfig->debugging === true && isset($_ENV['BASE_URL'])) {
         return $_ENV['BASE_URL'] . $path;
     } else {
-        return (new \Phplover\Config\Base)->base_url . $path;
+        return $baseConfig->base_url . $path;
     }
 }
 
