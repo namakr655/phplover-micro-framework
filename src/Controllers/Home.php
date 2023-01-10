@@ -8,7 +8,7 @@ namespace Phplover\Controllers;
 class Home
 {
 
-    public function Index()
+    public function index()
     {
         return view('home');
     }

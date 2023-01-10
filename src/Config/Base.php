@@ -16,6 +16,6 @@ class Base
 
     // default controller and method
     public $default_controller = 'Home';
-    public $default_method = 'Index';
+    public $default_method = 'index';
 
 }

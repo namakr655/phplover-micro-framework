@@ -34,3 +34,15 @@ function view (string $template, array $data = [], int $statusCode = 200)
     return $viewsLibrary->render($template, $data, $statusCode);
 
 }
+
+// JSON related functions
+function jsonResponse (array $data, int $statusCode = 200)
+{
+
+    // load the json library to use
+    $jsonLibrary = new \Phplover\Libraries\JsonResponse;
+
+    // render the json
+    return $jsonLibrary->response($data, $statusCode);
+
+}
